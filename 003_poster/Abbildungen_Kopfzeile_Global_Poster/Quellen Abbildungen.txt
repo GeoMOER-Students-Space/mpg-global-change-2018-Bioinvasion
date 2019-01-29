@@ -1,0 +1,7 @@
+North_American_Forest.jpg: https://climatenewsnetwork.net/changing-face-of-american-forests/
+
+North_American_Forest_Damaged.jpg: https://www.nrcan.gc.ca/forests/fire-insects-disturbances/top-insects/13369
+
+Asian_longhorn_beetle.jpg: http://www.iucngisd.org/gisd/species.php?sc=111
+
+EU_PAL_Container: https://chs-containergroup.de/de/container/pallettenbreiter-container
