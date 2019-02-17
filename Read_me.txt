@@ -19,6 +19,11 @@ plz use subfolder (if needed create) for matreials like pictures
 003_poster
 progress on poster
 
+004_video_build
+pptx to build the pics
+all pics 
+video development with Moviemaker
+
 ## name logic
 
 - plz add a "_Nameskürzel" to any doc u save (e.g. testtext_AS.odt)
