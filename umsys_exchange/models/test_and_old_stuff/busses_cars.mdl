@@ -1,0 +1,185 @@
+{UTF-8}
+Car drivers  = A FUNCTION OF( -Migration,-Migration CD ÖVPN)
+	~	
+	~		|
+
+City financials  = A FUNCTION OF( Income minus outcome)
+	~	
+	~		|
+
+Costs ÖVPN  = A FUNCTION OF( OVPN drivers)
+	~	
+	~		|
+
+Gasoline costs Car drivers  = A FUNCTION OF( Taxation)
+	~	
+	~		|
+
+Half drivers  = A FUNCTION OF( Migration,-Migration ÖVPN)
+	~	
+	~		|
+
+Income minus outcome  = A FUNCTION OF( Costs ÖVPN,Income ÖVPN,Monthly casoline taxation income\
+		)
+	~	
+	~		|
+
+Income ÖVPN  = A FUNCTION OF( Monthly ticket price,OVPN drivers)
+	~	
+	~		|
+
+Migration  = A FUNCTION OF( Car drivers,Migration HD)
+	~	
+	~		|
+
+Migration CD ÖVPN  = A FUNCTION OF( Gasoline costs Car drivers,Monthly ticket price,\
+		Toleratable costs to sustain a car)
+	~	
+	~		|
+
+Migration HD  = A FUNCTION OF( )
+	~	
+	~		|
+
+Migration ÖVPN  = A FUNCTION OF( Monthly costs Half drivers,Monthly ticket price,Toleratable costs to sustain a car\
+		)
+	~	
+	~		|
+
+Monthly casoline taxation income  = A FUNCTION OF( Car drivers,Gasoline costs Car drivers\
+		,Half drivers,Monthly costs Half drivers,Taxation)
+	~	
+	~		|
+
+Monthly costs Half drivers  = A FUNCTION OF( Taxation)
+	~	
+	~		|
+
+Monthly ticket price  = A FUNCTION OF( )
+	~	
+	~		|
+
+Number of cars  = A FUNCTION OF( Car drivers,Half drivers)
+	~	
+	~		|
+
+OVPN drivers  = A FUNCTION OF( Migration CD ÖVPN,Migration ÖVPN)
+	~	
+	~		|
+
+Taxation  = A FUNCTION OF( )
+	~	
+	~		|
+
+Toleratable costs to sustain a car  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,75,0
+10,1,Car drivers,1033,307,40,20,3,3,0,0,0,0,0,0
+10,2,Half drivers,672,229,40,20,3,3,0,0,0,0,0,0
+10,3,OVPN drivers,1350,220,40,20,3,3,0,0,0,0,0,0
+1,4,6,2,4,0,0,22,0,0,0,-1--1--1,,1|(672,274)|
+1,5,6,1,100,0,0,22,0,0,0,-1--1--1,,1|(835,307)|
+11,6,0,672,307,6,8,34,3,0,0,1,0,0,0
+10,7,Migration,672,326,31,11,40,3,0,0,-1,0,0,0
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(672,326)|
+1,9,10,7,100,0,0,22,0,0,0,-1--1--1,,1|(672,326)|
+11,10,0,672,326,6,8,34,3,0,0,1,0,0,0
+10,11,Migration HD,672,345,44,11,40,3,0,0,-1,0,0,0
+1,12,14,3,4,0,0,22,0,0,0,-1--1--1,,1|(1163,224)|
+1,13,14,2,100,0,0,22,0,0,0,-1--1--1,,1|(858,224)|
+11,14,0,1011,224,6,8,34,3,0,0,1,0,0,0
+10,15,Migration ÖVPN,1011,243,55,11,40,3,0,0,-1,0,0,0
+1,16,18,3,4,0,0,22,0,0,0,-1--1--1,,1|(1350,269)|
+1,17,18,1,100,0,0,22,0,0,0,-1--1--1,,1|(1208,307)|
+11,18,0,1350,307,6,8,34,3,0,0,1,0,0,0
+10,19,Migration CD ÖVPN,1350,334,45,19,40,3,0,0,-1,0,0,0
+12,20,48,828,-124,10,8,0,3,0,0,-1,0,0,0
+10,21,City financials,1024,611,40,20,3,3,0,0,0,0,0,0
+12,22,48,1028,467,10,8,0,3,0,0,-1,0,0,0
+1,23,25,21,4,0,0,22,0,0,0,-1--1--1,,1|(1028,565)|
+1,24,25,22,100,0,0,22,0,0,0,-1--1--1,,1|(1028,501)|
+11,25,0,1028,533,8,6,33,3,0,0,4,0,0,0
+10,26,Income minus outcome,1080,533,44,19,40,3,0,0,-1,0,0,0
+10,27,Number of cars,587,470,50,11,8,3,0,0,0,0,0,0
+10,28,Taxation,250,359,28,11,8,3,0,0,0,0,0,0
+10,29,Monthly costs Half drivers,356,423,60,19,8,3,0,0,0,0,0,0
+10,30,Gasoline costs Car drivers,174,469,60,19,8,3,0,0,0,0,0,0
+10,31,Monthly casoline taxation income,414,645,54,19,8,3,0,0,0,0,0,0
+10,32,Toleratable costs to sustain a car,1157,45,63,19,8,3,0,0,0,0,0,0
+10,33,Monthly ticket price,1592,137,46,19,8,3,0,0,0,0,0,0
+10,34,Costs ÖVPN,1332,446,44,11,8,3,0,0,0,0,0,0
+10,35,Income ÖVPN,1386,573,49,11,8,3,0,0,0,0,0,0
+1,36,32,14,0,0,0,0,0,64,0,-1--1--1,,1|(1082,136)|
+1,37,32,18,0,0,0,0,0,64,0,-1--1--1,,1|(1253,177)|
+1,38,33,14,1,0,0,0,0,64,0,-1--1--1,,1|(1348,73)|
+1,39,33,35,1,0,0,0,0,64,0,-1--1--1,,1|(1604,396)|
+1,40,3,35,1,0,0,0,0,64,0,-1--1--1,,1|(1521,361)|
+1,41,3,34,1,0,0,0,0,64,0,-1--1--1,,1|(1477,382)|
+1,42,35,25,1,0,0,0,0,64,0,-1--1--1,,1|(1220,573)|
+1,43,34,25,1,0,0,0,0,64,0,-1--1--1,,1|(1146,476)|
+1,44,31,25,1,0,0,0,0,64,0,-1--1--1,,1|(789,646)|
+1,45,33,18,1,0,0,0,0,64,0,-1--1--1,,1|(1472,180)|
+1,46,29,14,1,0,0,0,0,64,0,-1--1--1,,1|(680,110)|
+1,47,28,29,0,0,0,0,0,64,0,-1--1--1,,1|(290,383)|
+1,48,28,31,0,0,0,0,0,64,0,-1--1--1,,1|(326,491)|
+1,49,28,30,0,0,0,0,0,64,0,-1--1--1,,1|(219,404)|
+1,50,30,19,1,0,0,0,0,64,0,-1--1--1,,1|(722,568)|
+1,51,1,27,0,0,0,0,0,64,0,-1--1--1,,1|(811,387)|
+1,52,2,27,1,0,0,0,0,64,0,-1--1--1,,1|(546,312)|
+1,53,1,31,0,0,0,0,0,64,0,-1--1--1,,1|(728,473)|
+1,54,1,7,1,0,0,0,0,64,0,-1--1--1,,1|(848,253)|
+1,55,29,31,0,0,0,0,0,64,0,-1--1--1,,1|(382,527)|
+1,56,30,31,0,0,0,0,0,64,0,-1--1--1,,1|(287,552)|
+1,57,2,31,0,0,0,0,0,64,0,-1--1--1,,1|(546,431)|
+///---\\\
+:L<%^E!@
+9:Current
+23:0
+15:0,0,0,1,0,0
+19:75,0
+27:0,
+34:0,
+5:Toleratable costs to sustain a car
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+42:1
+24:0
+25:0
+26:0

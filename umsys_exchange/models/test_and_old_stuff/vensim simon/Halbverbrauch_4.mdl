@@ -1,0 +1,204 @@
+{UTF-8}
+"Halbv-fahrer"= INTEG (
+	Abwanderung2-Abwanderung Halbfahrer,
+		0)
+	~	Personen
+	~		|
+
+Abwanderung Halbfahrer=
+	(tollerierbare Mehrkosten für Auto+monatl Betriebskosten halbV)-Monatsticketpreis
+	~	Personen/Month
+	~		|
+
+ÖPNV Nutzer= INTEG (
+	Abwanderung+Abwanderung Halbfahrer,
+		0)
+	~	Personen
+	~		|
+
+Betriebskosten ÖPNV neu=
+	ÖPNV Nutzer/40*11300
+	~	€/Month
+	~		|
+
+monatl Betriebskosten halbV=
+	((((0.45/((1-Steuersatz)*10))*Steuersatz*10)+0.45)*(0.5*3))*25
+	~	€/Month
+	~		|
+
+Autos Anzahl=
+	"Norm-fahrer"+"Halbv-fahrer"
+	~	N
+	~		|
+
+durch Benzinsteuer monatlich generierte Einnahmen=
+	("Norm-fahrer"*(monatliche Benzinkosten normV*Steuersatz))
+	+
+	("Halbv-fahrer"*(monatl Betriebskosten halbV*Steuersatz))
+	~	€/Month
+	~		|
+
+Einnahmen minus Ausgaben=
+	durch Benzinsteuer monatlich generierte Einnahmen+Einnahmen aus Tickets-Betriebskosten ÖPNV neu
+	~	€/Month
+	~		|
+
+monatliche Benzinkosten normV=
+	((((0.45/((1-Steuersatz)*10))*Steuersatz*10)+0.45)*(0.5*6))*25
+	~	€/Month
+	~		|
+
+Abwanderung2=
+	0.0004*"Norm-fahrer"
+	~	Personen/Month
+	~		|
+
+"Norm-fahrer"= INTEG (
+	-Abwanderung-Abwanderung2,
+		10000)
+	~	Personen
+	~		|
+
+Abwanderung=
+	(tollerierbare Mehrkosten für Auto+monatliche Benzinkosten normV)-Monatsticketpreis
+	~	Personen/Month
+	~		|
+
+Einnahmen aus Tickets=
+	Monatsticketpreis*ÖPNV Nutzer
+	~	€/Month
+	~		|
+
+tollerierbare Mehrkosten für Auto=
+	30
+	~	€/Month
+	~		|
+
+Monatsticketpreis=
+	90
+	~	€
+	~		|
+
+Stadtkasse= INTEG (
+	Einnahmen minus Ausgaben,
+		0)
+	~	€
+	~		|
+
+Steuersatz=
+	0.58
+	~	Dmnl [0,0.99,0.01]
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 600
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,90,0
+10,1,Steuersatz,223,292,33,11,8,3,0,0,0,0,0,0
+10,2,monatliche Benzinkosten normV,178,392,43,19,8,3,0,0,0,0,0,0
+10,3,durch Benzinsteuer monatlich generierte Einnahmen,482,737,64,28,8,3,0,0,0,0,0,0
+1,4,2,3,0,0,0,0,0,64,0,-1--1--1,,1|(320,554)|
+1,5,1,3,1,0,0,0,0,64,0,-1--1--1,,1|(318,494)|
+10,6,"Norm-fahrer",815,314,40,20,3,3,0,0,0,0,0,0
+10,7,ÖPNV Nutzer,1463,248,40,20,3,3,0,0,0,0,0,0
+10,8,Stadtkasse,981,792,40,20,3,3,0,0,0,0,0,0
+12,9,48,980,554,10,8,0,3,0,0,-1,0,0,0
+1,10,12,8,4,0,0,22,0,0,0,-1--1--1,,1|(983,716)|
+1,11,12,9,100,0,0,22,0,0,0,-1--1--1,,1|(983,603)|
+11,12,48,983,652,6,8,34,3,0,0,1,0,0,0
+10,13,Einnahmen minus Ausgaben,983,679,59,19,40,3,0,0,-1,0,0,0
+1,14,3,13,1,0,0,0,0,64,0,-1--1--1,,1|(748,750)|
+10,15,Monatsticketpreis,1498,147,56,11,8,3,0,0,0,0,0,0
+10,16,Einnahmen aus Tickets,1538,611,47,19,8,3,0,0,0,0,0,0
+1,17,15,16,1,0,0,0,0,64,0,-1--1--1,,1|(1733,336)|
+1,18,16,13,0,0,0,0,0,64,0,-1--1--1,,1|(1273,642)|
+1,19,7,16,1,0,0,0,0,64,0,-1--1--1,,1|(1545,375)|
+10,20,tollerierbare Mehrkosten für Auto,1124,156,67,19,8,3,0,0,0,0,0,0
+1,21,23,7,4,0,0,22,0,0,0,-1--1--1,,1|(1207,248)|
+1,22,23,6,100,0,0,22,0,0,0,-1--1--1,,1|(1028,319)|
+11,23,204,1207,319,6,8,34,3,0,0,1,0,0,0
+10,24,Abwanderung,1207,338,45,11,40,3,0,0,-1,0,0,0
+1,25,20,24,0,0,0,0,0,64,0,-1--1--1,,1|(1163,244)|
+1,26,15,24,1,0,0,0,0,64,0,-1--1--1,,1|(1288,259)|
+1,27,2,24,1,0,0,0,0,64,0,-1--1--1,,1|(835,481)|
+10,28,"Halbv-fahrer",446,186,40,20,3,3,0,0,0,0,0,0
+1,29,31,28,4,0,0,22,0,0,0,-1--1--1,,1|(662,186)|
+1,30,31,6,100,0,0,22,0,0,0,-1--1--1,,1|(662,314)|
+11,31,140,662,276,8,6,33,3,0,0,4,0,0,0
+10,32,Abwanderung2,719,276,49,11,40,3,0,0,-1,0,0,0
+10,33,monatl Betriebskosten halbV,332,350,69,19,8,3,0,0,0,0,0,0
+1,34,33,3,0,0,0,0,0,64,0,-1--1--1,,1|(402,532)|
+1,35,6,31,1,0,0,0,0,64,0,-1--1--1,,1|(765,257)|
+10,36,Autos Anzahl,722,418,43,11,8,3,0,0,0,0,0,0
+1,37,28,36,0,0,0,0,0,64,0,-1--1--1,,1|(583,301)|
+1,38,6,36,0,0,0,0,0,64,0,-1--1--1,,1|(769,365)|
+1,39,28,3,0,0,0,0,0,64,0,-1--1--1,,1|(463,450)|
+1,40,6,3,0,0,0,0,0,64,0,-1--1--1,,1|(656,516)|
+1,41,1,2,0,0,0,0,0,64,0,-1--1--1,,1|(205,331)|
+1,42,1,33,0,0,0,0,0,64,0,-1--1--1,,1|(263,313)|
+10,43,Betriebskosten ÖPNV neu,1349,464,48,19,8,3,0,0,0,0,0,0
+1,44,7,43,0,0,0,0,0,64,0,-1--1--1,,1|(1409,350)|
+1,45,43,13,1,0,0,0,0,64,0,-1--1--1,,1|(1157,543)|
+1,46,48,7,4,0,0,22,0,0,0,-1--1--1,,1|(861,248)|
+1,47,48,28,100,0,0,22,0,0,0,-1--1--1,,1|(446,52)|
+11,48,300,861,52,6,8,34,3,0,0,1,0,0,0
+10,49,Abwanderung Halbfahrer,861,79,41,19,40,3,0,0,-1,0,0,0
+1,50,33,49,1,0,0,0,0,64,0,-1--1--1,,1|(467,71)|
+1,51,20,49,0,0,0,0,0,64,0,-1--1--1,,1|(987,115)|
+1,52,15,49,1,0,0,0,0,64,0,-1--1--1,,1|(1296,44)|
+12,54,0,237,115,150,150,3,44,0,0,2,0,0,0
+Abwanderung Halbfahrer,Graph
+12,55,0,1270,725,150,150,3,44,0,0,2,0,0,0
+Stadtkasse,Graph
+12,56,0,739,618,150,150,3,44,0,0,2,0,0,0
+Autos Anzahl,Graph
+///---\\\
+:L<%^E!@
+1:new2.vdf
+9:new2
+13:ReferenceMode
+23:0
+15:0,0,0,0,0,0
+19:90,0
+27:2,
+34:0,
+4:Time
+5:Abwanderung
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+42:1
+24:0
+25:600
+26:600
