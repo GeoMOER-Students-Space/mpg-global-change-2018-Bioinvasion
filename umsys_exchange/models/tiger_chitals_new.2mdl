@@ -1,0 +1,151 @@
+{UTF-8}
+Birth rate=
+	0.1
+	~	
+	~		|
+
+Chitals population= INTEG (
+	Population growth Chitals-Population decrease Chitals,
+		0.1)
+	~	t
+	~		|
+
+Death rate=
+	0.1
+	~	
+	~		|
+
+Energy consumption=
+	0.1
+	~	
+	~		|
+
+Growth by snatching Chitals=
+	0.1
+	~	
+	~		|
+
+Meet=
+	Chitals population*Tiger population
+	~	
+	~		|
+
+Population decrease Chitals=
+	Death rate*Meet
+	~	
+	~		|
+
+Population decrease Tigers=
+	Energy consumption*Tiger population
+	~	
+	~		|
+
+Population growth Chitals=
+	Birth rate*Chitals population
+	~	
+	~		|
+
+Population growth Tigers=
+	Growth by snatching Chitals*Meet
+	~	
+	~		|
+
+Tiger population= INTEG (
+	Population growth Tigers-Population decrease Tigers,
+		0.1)
+	~	t
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 0.1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+10,1,Chitals population,281,133,40,20,3,3,0,0,0,0,0,0
+10,2,Birth rate,158,38,30,11,8,3,0,0,0,0,0,0
+12,3,48,100,133,10,8,0,3,0,0,-1,0,0,0
+1,4,6,1,4,0,0,22,0,0,0,-1--1--1,,1|(211,133)|
+1,5,6,3,100,0,0,22,0,0,0,-1--1--1,,1|(139,133)|
+11,6,48,175,133,6,8,34,3,0,0,1,0,0,0
+10,7,Population growth Chitals,175,152,58,19,40,3,0,0,-1,0,0,0
+10,8,Death rate,523,50,34,11,8,3,0,0,0,0,0,0
+12,9,48,461,133,10,8,0,3,0,0,-1,0,0,0
+11,10,48,386,133,6,8,2,3,0,0,1,0,0,0
+1,11,10,9,4,0,0,22,0,0,0,-1--1--1,,1|(421,133)|
+1,12,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(350,133)|
+1,13,15,10,4,0,0,22,0,0,0,-1--1--1,,1|(386,133)|
+1,14,15,10,100,0,0,22,0,0,0,-1--1--1,,1|(386,133)|
+11,15,48,386,133,6,8,34,3,0,0,1,0,0,0
+10,16,Population decrease Chitals,386,160,53,19,40,3,0,0,-1,0,0,0
+1,17,2,7,1,0,0,0,0,64,0,-1--1--1,,1|(129,88)|
+1,18,1,7,1,0,0,0,0,64,0,-1--1--1,,1|(227,219)|
+1,19,8,16,1,0,0,0,0,64,0,-1--1--1,,1|(395,37)|
+10,20,Tiger population,414,442,40,20,3,3,0,0,0,0,0,0
+12,21,48,220,444,10,8,0,3,0,0,-1,0,0,0
+1,22,24,20,4,0,0,22,0,0,0,-1--1--1,,1|(341,444)|
+1,23,24,21,100,0,0,22,0,0,0,-1--1--1,,1|(263,444)|
+11,24,48,302,444,6,8,34,3,0,0,1,0,0,0
+10,25,Population growth Tigers,302,471,58,19,40,3,0,0,-1,0,0,0
+10,26,Growth by snatching Chitals,165,383,53,19,8,3,0,0,0,0,0,0
+10,27,Meet,268,274,18,11,8,3,0,0,0,0,0,0
+1,28,1,27,1,0,0,0,0,64,0,-1--1--1,,1|(339,230)|
+1,29,27,16,1,0,0,0,0,64,0,-1--1--1,,1|(370,261)|
+1,30,26,24,1,0,0,0,0,64,0,-1--1--1,,1|(233,401)|
+1,31,27,24,1,0,0,0,0,64,0,-1--1--1,,1|(251,361)|
+1,32,20,27,1,0,0,0,0,64,0,-1--1--1,,1|(306,393)|
+12,33,48,621,442,10,8,0,3,0,0,-1,0,0,0
+1,34,36,33,4,0,0,22,0,0,0,-1--1--1,,1|(574,442)|
+1,35,36,20,100,0,0,22,0,0,0,-1--1--1,,1|(490,442)|
+11,36,48,532,442,6,8,34,3,0,0,1,0,0,0
+10,37,Population decrease Tigers,532,469,50,19,40,3,0,0,-1,0,0,0
+10,38,Energy consumption,724,381,41,19,8,3,0,0,0,0,0,0
+1,39,38,37,1,0,0,0,0,64,0,-1--1--1,,1|(650,468)|
+1,40,20,37,1,0,0,0,0,64,0,-1--1--1,,1|(439,515)|
+///---\\\
+:L<%^E!@
+1:Current.vdf
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:0,
+34:0,
+4:Time
+5:Chitals population
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+42:1
+24:0
+25:99.999
+26:99.999

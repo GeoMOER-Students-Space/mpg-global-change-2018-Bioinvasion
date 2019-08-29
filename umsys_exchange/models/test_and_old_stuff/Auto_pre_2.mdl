@@ -1,0 +1,189 @@
+{UTF-8}
+Anzahl Kraftfahrzeuge=
+	Gelegenheitsfahrer+Normalfahrer
+	~	
+	~		|
+
+Betriebskosten ÖPNV=
+	"ÖPNV-Nutzer"/40*11300
+	~	
+	~		|
+
+Einnahmen aus Krafstoffsteuer=
+	(Normalfahrer*(Monatliche Krafstoffkosten*Steuersatz))
+	+
+	(Gelegenheitsfahrer*(Monatliche Krafstoffkosten*Steuersatz))
+	~	Euro/Monat
+	~		|
+
+Einnahmen aus Monatstickets=
+	Preis Monatsticket*"ÖPNV-Nutzer"
+	~	
+	~		|
+
+Einnahmen und Ausgaben=
+	Einnahmen aus Krafstoffsteuer+Einnahmen aus Monatstickets-Betriebskosten ÖPNV
+	~	
+	~		|
+
+Gelegenheitsfahrer= INTEG (
+	"Umsteiger-N/G"-"Umsteiger-G",
+		0)
+	~	
+	~		|
+
+Monatliche Krafstoffkosten=
+	((((0.45/((1-Steuersatz)*10))*Steuersatz*10)+0.45)*(0.5*6))*25
+	~	
+	~		|
+
+Normalfahrer= INTEG (
+	-"Umsteiger-N"-"Umsteiger-N/G",
+		1000)
+	~	
+	~		|
+
+"ÖPNV-Nutzer"= INTEG (
+	"Umsteiger-G"+"Umsteiger-N",
+		0)
+	~	
+	~		|
+
+Preis Monatsticket=
+	90
+	~	Euro
+	~		|
+
+Schwelle Mehrkosten für KFZ=
+	30
+	~	
+	~		|
+
+Stadtkasse= INTEG (
+	Einnahmen und Ausgaben,
+		100)
+	~	Euro
+	~		|
+
+Steuersatz=
+	0.58
+	~	 [0.01,0.99,0.01]
+	~		|
+
+"Umsteiger-G"=
+	(Schwelle Mehrkosten für KFZ+Monatliche Krafstoffkosten)-Preis Monatsticket
+	~	
+	~		|
+
+"Umsteiger-N"=
+	(Schwelle Mehrkosten für KFZ+Monatliche Krafstoffkosten)-Preis Monatsticket
+	~	
+	~		|
+
+"Umsteiger-N/G"=
+	0.0004*Normalfahrer
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,80,0
+10,1,"ÖPNV-Nutzer",857,553,90,22,3,131,0,0,0,0,0,0
+10,2,Normalfahrer,636,350,60,20,3,131,0,0,0,0,0,0
+10,3,Gelegenheitsfahrer,1065,359,74,22,3,131,0,0,0,0,0,0
+1,4,6,1,4,0,0,22,0,0,0,-1--1--1,,1|(702,549)|
+1,5,6,2,100,0,0,22,0,0,0,-1--1--1,,1|(631,455)|
+11,6,156,631,549,6,8,34,3,0,0,1,0,0,0
+10,7,"Umsteiger-N",631,568,42,11,40,3,0,0,-1,0,0,0
+1,8,10,1,4,0,0,22,0,0,0,-1--1--1,,1|(1003,553)|
+1,9,10,3,100,0,0,22,0,0,0,-1--1--1,,1|(1066,463)|
+11,10,380,1066,553,6,8,34,3,0,0,1,0,0,0
+10,11,"Umsteiger-G",1066,572,41,11,40,3,0,0,-1,0,0,0
+1,12,14,3,4,0,0,22,0,0,0,-1--1--1,,1|(918,353)|
+1,13,14,2,100,0,0,22,0,0,0,-1--1--1,,1|(764,353)|
+11,14,364,839,353,6,8,34,3,0,0,1,0,0,0
+10,15,"Umsteiger-N/G",839,372,49,11,40,3,0,0,-1,0,0,0
+10,16,Preis Monatsticket,869,773,78,17,8,131,0,0,0,0,0,0
+10,17,Betriebskosten ÖPNV,859,670,84,19,8,131,0,0,0,0,0,0
+10,18,Einnahmen aus Monatstickets,1054,668,112,24,8,131,0,0,0,0,0,0
+10,19,Steuersatz,844,135,38,16,8,131,0,0,0,0,0,0
+10,20,Einnahmen aus Krafstoffsteuer,848,308,109,26,8,131,0,0,0,0,0,0
+10,21,Monatliche Krafstoffkosten,845,219,92,25,8,131,0,0,0,0,0,0
+10,22,Schwelle Mehrkosten für KFZ,858,489,101,26,8,131,0,0,0,0,0,0
+1,23,22,10,0,0,0,0,0,64,0,-1--1--1,,1|(994,530)|
+1,24,22,6,0,0,0,0,0,64,0,-1--1--1,,1|(704,529)|
+1,25,1,17,0,0,0,0,0,64,0,-1--1--1,,1|(857,606)|
+1,26,1,18,0,0,0,0,0,64,0,-1--1--1,,1|(946,605)|
+1,27,16,7,1,0,0,0,0,64,0,-1--1--1,,1|(548,794)|
+1,28,16,18,0,0,0,0,0,64,0,-1--1--1,,1|(948,727)|
+1,29,16,11,1,0,0,0,0,64,0,-1--1--1,,1|(1186,803)|
+1,30,21,6,1,0,0,0,0,64,0,-1--1--1,,1|(511,321)|
+1,31,21,10,1,0,0,0,0,64,0,-1--1--1,,1|(1194,330)|
+1,32,2,20,1,0,0,0,0,64,0,-1--1--1,,1|(706,316)|
+1,33,3,20,1,0,0,0,0,64,0,-1--1--1,,1|(988,317)|
+10,34,Anzahl Kraftfahrzeuge,855,442,75,21,8,131,0,0,0,0,0,0
+1,35,2,34,0,0,0,0,0,64,0,-1--1--1,,1|(737,392)|
+1,36,3,34,0,0,0,0,0,64,0,-1--1--1,,1|(965,398)|
+10,37,Stadtkasse,170,674,40,20,3,3,0,0,0,0,0,0
+12,38,48,172,295,10,8,0,3,0,0,-1,0,0,0
+1,39,41,37,4,0,0,22,0,0,0,-1--1--1,,1|(172,569)|
+1,40,41,38,100,0,0,22,0,0,0,-1--1--1,,1|(172,387)|
+11,41,48,172,478,8,6,33,3,0,0,4,0,0,0
+10,42,Einnahmen und Ausgaben,270,478,90,24,40,131,0,0,-1,0,0,0
+1,43,20,41,1,0,0,0,3,64,0,64-160-98,|12||0-0-0,1|(406,270)|
+1,44,17,41,1,0,0,0,3,64,0,64-160-98,|12||0-0-0,1|(413,770)|
+1,45,18,41,1,0,0,0,3,64,0,64-160-98,|12||0-0-0,1|(574,914)|
+1,46,19,21,1,0,0,0,0,64,0,-1--1--1,,1|(846,172)|
+1,47,21,20,1,0,0,0,0,64,0,-1--1--1,,1|(848,254)|
+1,48,19,20,1,0,0,0,0,64,0,-1--1--1,,1|(960,233)|
+1,49,2,15,1,0,0,0,0,64,0,-1--1--1,,1|(737,369)|
+12,50,0,1492,203,150,150,3,44,0,0,2,0,0,0
+Anzahl Kraftfahrzeuge,Graph
+12,51,0,1491,537,150,150,3,44,0,0,2,0,0,0
+Stadtkasse,Graph
+12,52,0,1496,871,150,150,3,44,0,0,2,0,0,0
+"ÖPNV-Nutzer",Graph
+12,53,0,275,83,150,150,3,44,0,0,2,0,0,0
+Gelegenheitsfahrer,Graph
+///---\\\
+:L<%^E!@
+1:Current.vdf
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:80,0
+27:2,
+34:0,
+4:Time
+5:Steuersatz
+24:0
+25:100
+26:100

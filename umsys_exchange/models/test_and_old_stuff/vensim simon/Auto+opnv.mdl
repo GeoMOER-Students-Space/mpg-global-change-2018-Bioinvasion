@@ -1,0 +1,250 @@
+{UTF-8}
+"1"=
+	(10000-(montatliche Benzinkosten+tollerierbare Mehrkosten für Auto-Monatsticketpreis\
+		))*10
+	~	Personen/Month
+	~		|
+
+"2"=
+	10000-"1"
+	~	Personen
+	~		|
+
+Anzahl Autos=
+	Autofahrer
+	~	N
+	~		|
+
+Anzahl Busse=
+	ÖPNV Nutzer/durchschnittlich pro Bus transportierte Personen
+	~	Personen/Bus
+	~		|
+
+Autofahrer= INTEG (
+	"1",
+		0)
+	~	Personen
+	~		|
+
+ÖPNV Nutzer= INTEG (
+	"2",
+		0)
+	~	
+	~		|
+
+Betriebskosten ÖPNV=
+	Anzahl Busse*Betriebskosten pro Bus pro Monat
+	~	
+	~		|
+
+Betriebskosten pro Bus pro Monat=
+	113000
+	~	€
+	~	120 km Fahrstecke am Tag; Verbrauch ca 30 L;
+		Lohnkosten im Monat3000€/Monat?;
+		Wartungskosten 2000€/ Monat?   so hohe monatliche Betriebskosten?!
+	|
+
+"Bezinkosten/50km"=
+	Benzinpreis*(0.5*"Verbrauch/100km")
+	~	€
+	~		|
+
+durch Benzinsteuer monatlich generierte Einnahmen=
+	Anzahl Autos*(montatliche Benzinkosten*Steuersatz)
+	~	€
+	~		|
+
+durchschnittlich pro Bus transportierte Personen=
+	40
+	~	Personen
+	~		|
+
+Einnahmen aus Tickets=
+	Monatsticketpreis*ÖPNV Nutzer
+	~	€
+	~		|
+
+Einnahmen minus Ausgaben=
+	durch Benzinsteuer monatlich generierte Einnahmen+Einnahmen aus Tickets-Betriebskosten ÖPNV
+	~	€/Month
+	~		|
+
+tollerierbare Mehrkosten für Auto=
+	30
+	~	€
+	~		|
+
+monatliche Bilanz Stadtkasse=
+	durch Benzinsteuer monatlich generierte Einnahmen+Einnahmen aus Tickets-Betriebskosten ÖPNV
+	~	€
+	~		|
+
+Monatsticketpreis=
+	90
+	~	€
+	~		|
+
+Stadtkasse= INTEG (
+	Einnahmen minus Ausgaben,
+		0)
+	~	€
+	~		|
+
+Pendler= INTEG (
+	-"1"-"2",
+		10000)
+	~	Personen
+	~		|
+
+Benzinpreis=
+	(Rohstoffpreis/((1-Steuersatz)*10)*(Steuersatz*10)+Rohstoffpreis)
+	~	€/L
+	~		|
+
+Häufigkeit der gefahrenen Strecke im Monat hin und zurück=
+	10
+	~	Dmnl
+	~		|
+
+montatliche Benzinkosten=
+	"Bezinkosten/50km"*Häufigkeit der gefahrenen Strecke im Monat hin und zurück
+	~	€
+	~		|
+
+Rohstoffpreis=
+	0.45
+	~	€
+	~		|
+
+Steuersatz=
+	0.7
+	~	Dmnl [0,0.99,0.01]
+	~		|
+
+"Verbrauch/100km"=
+	6.5
+	~	L
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 120
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+10,1,Steuersatz,518,67,33,11,8,3,0,0,0,0,0,0
+10,2,Rohstoffpreis,328,40,42,11,8,3,0,0,0,0,0,0
+10,3,Benzinpreis,400,181,37,11,8,3,0,0,0,0,0,0
+10,4,"Verbrauch/100km",544,245,62,11,8,131,0,0,0,0,0,0
+10,5,"Bezinkosten/50km",392,349,82,18,8,131,0,0,0,0,0,0
+1,6,2,3,0,0,0,0,0,64,0,-1--1--1,,1|(360,104)|
+1,7,1,3,0,0,0,0,0,64,0,-1--1--1,,1|(464,119)|
+10,8,Häufigkeit der gefahrenen Strecke im Monat hin und zurück,134,344,71,28,8,3,0,0,0,0,0,0
+1,9,3,5,0,0,0,0,0,64,0,-1--1--1,,1|(396,254)|
+1,10,4,5,0,0,0,0,0,64,0,-1--1--1,,1|(478,289)|
+12,11,0,190,168,142,42,3,188,0,0,2,0,0,0
+Benzinpreis,Table
+10,12,Anzahl Autos,536,367,43,11,8,3,0,0,0,0,0,0
+10,13,montatliche Benzinkosten,261,461,43,19,8,3,0,0,0,0,0,0
+1,14,8,13,0,0,0,0,0,64,0,-1--1--1,,1|(196,402)|
+1,15,5,13,0,0,0,0,0,64,0,-1--1--1,,1|(332,399)|
+10,16,durch Benzinsteuer monatlich generierte Einnahmen,444,643,64,28,8,3,0,0,0,0,0,0
+1,17,13,16,0,0,0,0,0,64,0,-1--1--1,,1|(342,542)|
+1,18,12,16,0,0,0,0,0,64,0,-1--1--1,,1|(495,489)|
+12,19,0,158,546,143,42,3,188,0,0,2,0,0,0
+montatliche Benzinkosten,Table
+12,20,0,527,726,311,43,3,188,0,0,2,0,0,0
+durch Benzinsteuer monatlich generierte Einnahmen,Table
+1,21,1,16,1,0,0,0,0,64,0,-1--1--1,,1|(712,392)|
+10,22,Anzahl Busse,1228,330,43,11,8,3,0,0,0,0,0,0
+10,23,Betriebskosten pro Bus pro Monat,1058,328,48,19,8,3,0,0,0,0,0,0
+10,24,Pendler,1060,156,40,20,3,3,0,0,0,0,0,0
+10,30,Autofahrer,785,281,40,20,3,3,0,0,0,0,0,0
+10,31,ÖPNV Nutzer,1296,156,40,20,3,3,0,0,0,0,0,0
+1,33,35,30,4,0,0,22,0,0,0,-1--1--1,,1|(960,281)|
+1,34,35,24,100,0,0,22,0,0,0,-1--1--1,,1|(993,157)|
+11,35,0,960,157,6,8,34,3,0,0,1,0,0,0
+10,36,"1",960,176,6,11,40,3,0,0,-1,0,0,0
+1,38,40,31,4,0,0,22,0,0,0,-1--1--1,,1|(1220,156)|
+1,39,40,24,100,0,0,22,0,0,0,-1--1--1,,1|(1136,156)|
+11,40,0,1178,156,6,8,34,3,0,0,1,0,0,0
+10,41,"2",1178,175,6,11,40,3,0,0,-1,0,0,0
+1,42,30,12,0,0,0,0,0,64,0,-1--1--1,,1|(662,322)|
+10,43,monatliche Bilanz Stadtkasse,1003,562,55,19,8,3,0,0,0,0,0,0
+10,44,Stadtkasse,776,611,40,20,3,3,0,0,0,0,0,0
+1,50,31,22,0,0,0,0,0,64,0,-1--1--1,,1|(1263,240)|
+10,51,durchschnittlich pro Bus transportierte Personen,1455,263,76,19,8,3,0,0,0,0,0,0
+1,52,51,22,0,0,0,0,0,64,0,-1--1--1,,1|(1334,298)|
+10,53,Betriebskosten ÖPNV,1185,402,48,19,8,3,0,0,0,0,0,0
+1,54,23,53,0,0,0,0,0,64,0,-1--1--1,,1|(1114,361)|
+1,55,22,53,0,0,0,0,0,64,0,-1--1--1,,1|(1212,356)|
+12,58,48,781,409,10,8,0,3,0,0,-1,0,0,0
+1,60,62,44,4,0,0,22,0,0,0,-1--1--1,,1|(780,539)|
+1,61,62,58,100,0,0,22,0,0,0,-1--1--1,,1|(780,444)|
+11,62,0,780,479,6,8,34,3,0,0,1,0,0,0
+10,63,Einnahmen minus Ausgaben,780,506,59,19,40,3,0,0,-1,0,0,0
+1,68,16,63,1,0,0,0,0,64,0,-1--1--1,,1|(643,603)|
+1,69,53,63,1,0,0,0,0,64,0,-1--1--1,,1|(991,468)|
+1,70,16,43,1,0,0,0,0,64,0,-1--1--1,,1|(749,667)|
+1,71,53,43,1,0,0,0,0,64,0,-1--1--1,,1|(1148,491)|
+1,74,13,36,1,0,0,0,0,64,0,-1--1--1,,1|(608,288)|
+10,75,Monatsticketpreis,1251,45,56,11,8,3,0,0,0,0,0,0
+1,77,75,36,1,0,0,0,0,64,0,-1--1--1,,1|(986,55)|
+1,78,35,41,1,0,0,0,0,64,0,-1--1--1,,1|(1080,230)|
+10,79,Einnahmen aus Tickets,1285,509,47,19,8,3,0,0,0,0,0,0
+1,80,75,79,1,0,0,0,0,64,0,-1--1--1,,1|(1595,260)|
+1,81,79,63,0,0,0,0,0,64,0,-1--1--1,,1|(1045,507)|
+1,82,79,43,1,0,0,0,0,64,0,-1--1--1,,1|(1164,613)|
+1,83,31,79,1,0,0,0,0,64,0,-1--1--1,,1|(1342,292)|
+10,84,tollerierbare Mehrkosten für Auto,1049,63,67,19,8,3,0,0,0,0,0,0
+1,85,84,36,0,0,0,0,0,64,0,-1--1--1,,1|(1004,119)|
+///---\\\
+:L<%^E!@
+1:testneu.vdf
+1:Auto Current.vdf
+9:testneu
+13:ReferenceMode
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:2,
+34:0,
+4:Time
+5:ÖPNV Nutzer
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+42:1
+24:0
+25:120
+26:120

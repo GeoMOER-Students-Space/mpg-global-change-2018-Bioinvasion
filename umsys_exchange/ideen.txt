@@ -1,0 +1,21 @@
+Ideen für bericht
+
+#Einleitung - was sind umweltsysteme, aus quellen zitteren
+
+#Model und Szenario - simulation invasive arten
+
+#Was das Model kann - simulieren unterschiedliche anzahl verhältnis der arten, ab wann problematisch
+
+#Diskussion - auf probleme hinweisen, was fehlt noch um das system realistischer zu machen
+(inhaltlich, verdrängt AMK den EMK auch durch auffressen und biologische waffe)
+
+#abbildungen von Modell und vershciedenen simulationen (also die ergebnisse)
+
+### Model
+
+#Schalter einbauen für wichtige Größen, Menge Art, Reprdoduktionsvorteil
+#logik testen, zb ob auch wenige asiatische eine riesige menge heimischer verdrängen
+#Umstellen auf erhöhte reproduktion durch fressen, nicht über "energie consumption"
+
+#ggf gucken ob chris da ist und einfach mal fragen.
+
