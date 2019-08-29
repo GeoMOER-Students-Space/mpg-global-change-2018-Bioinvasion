@@ -1,0 +1,212 @@
+{UTF-8}
+Meet asi=
+	Greenfly*Asian Ladybug
+	~	
+	~		|
+
+Population decrease Greenfly=
+	Death rate*(Meet eur+Meet asi)
+	~	
+	~		|
+
+Population decrease asian Ladybug=
+	Energy consumption asian Ladybug*Asian Ladybug
+	~	
+	~		|
+
+Asian Ladybug= INTEG (
+	Population growth asian Ladybug-Population decrease asian Ladybug,
+		0.1)
+	~	t
+	~		|
+
+Energy consumption asian Ladybug=
+	0.1
+	~	
+	~		|
+
+Population growth asian Ladybug=
+	Growth by consuming Greenflys asi*Meet asi
+	~	
+	~		|
+
+Growth by consuming Greenflys asi=
+	0.11
+	~	
+	~		|
+
+Birth rate=
+	0.1
+	~	
+	~		|
+
+Greenfly= INTEG (
+	Population growth Greenfly-Population decrease Greenfly,
+		1000)
+	~	t
+	~		|
+
+Death rate=
+	0.1
+	~	
+	~		|
+
+Energy consumption european Ladybug=
+	0.1
+	~	
+	~		|
+
+Growth by consuming Greenflys eur=
+	0.1
+	~	
+	~		|
+
+Meet eur=
+	Greenfly*European Ladybug
+	~	
+	~		|
+
+Population decrease european Ladybug=
+	Energy consumption european Ladybug*European Ladybug
+	~	
+	~		|
+
+Population growth Greenfly=
+	Birth rate*Greenfly
+	~	
+	~		|
+
+Population growth european Ladybug=
+	Growth by consuming Greenflys eur*Meet eur
+	~	
+	~		|
+
+European Ladybug= INTEG (
+	Population growth european Ladybug-Population decrease european Ladybug,
+		1)
+	~	t
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 300
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 0.5
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,75,0
+10,1,Greenfly,233,19,40,20,3,3,0,0,0,0,0,0
+10,2,Birth rate,110,-76,30,11,8,3,0,0,0,0,0,0
+12,3,48,52,19,10,8,0,3,0,0,-1,0,0,0
+1,4,6,1,4,0,0,22,0,0,0,-1--1--1,,1|(163,19)|
+1,5,6,3,100,0,0,22,0,0,0,-1--1--1,,1|(91,19)|
+11,6,48,127,19,6,8,34,3,0,0,1,0,0,0
+10,7,Population growth Greenfly,127,58,45,31,40,131,0,0,-1,0,0,0
+10,8,Death rate,475,-64,34,11,8,3,0,0,0,0,0,0
+12,9,48,413,19,10,8,0,3,0,0,-1,0,0,0
+11,10,48,338,19,6,8,2,3,0,0,1,0,0,0
+1,11,10,9,4,0,0,22,0,0,0,-1--1--1,,1|(373,19)|
+1,12,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(302,19)|
+1,13,15,10,4,0,0,22,0,0,0,-1--1--1,,1|(338,19)|
+1,14,15,10,100,0,0,22,0,0,0,-1--1--1,,1|(338,19)|
+11,15,48,338,19,6,8,34,3,0,0,1,0,0,0
+10,16,Population decrease Greenfly,338,56,52,29,40,131,0,0,-1,0,0,0
+1,17,2,6,1,0,0,0,0,64,0,-1--1--1,,1|(81,-26)|
+1,18,1,6,1,0,0,0,0,64,0,-1--1--1,,1|(179,105)|
+1,19,8,15,1,0,0,0,0,64,0,-1--1--1,,1|(347,-77)|
+10,20,European Ladybug,381,458,40,20,3,3,0,0,0,0,0,0
+12,21,48,158,461,10,8,0,3,0,0,-1,0,0,0
+1,22,24,20,4,0,0,22,0,0,0,-1--1--1,,1|(308,460)|
+1,23,24,21,100,0,0,22,0,0,0,-1--1--1,,1|(215,460)|
+11,24,48,269,460,6,8,34,3,0,0,1,0,0,0
+10,25,Population growth european Ladybug,269,518,48,50,40,131,0,0,-1,0,0,0
+10,26,Growth by consuming Greenflys eur,91,366,78,23,8,131,0,0,0,0,0,0
+10,27,Meet eur,234,244,53,14,8,131,0,0,0,0,0,0
+1,28,1,27,1,0,0,0,0,64,0,-1--1--1,,1|(291,116)|
+1,29,27,15,1,0,0,0,0,64,0,-1--1--1,,1|(322,147)|
+1,30,26,24,1,0,0,0,0,64,0,-1--1--1,,1|(189,406)|
+1,31,27,24,1,0,0,0,0,64,0,-1--1--1,,1|(218,377)|
+1,32,20,27,1,0,0,0,0,64,0,-1--1--1,,1|(273,409)|
+12,33,48,626,459,10,8,0,3,0,0,-1,0,0,0
+1,34,36,33,4,0,0,22,0,0,0,-1--1--1,,1|(560,458)|
+1,35,36,20,100,0,0,22,0,0,0,-1--1--1,,1|(457,458)|
+11,36,48,499,458,6,8,34,3,0,0,1,0,0,0
+10,37,Population decrease european Ladybug,499,519,42,53,40,131,0,0,-1,0,0,0
+10,38,Energy consumption european Ladybug,609,351,66,20,8,131,0,0,0,0,0,0
+1,39,38,36,1,0,0,0,0,64,0,-1--1--1,,1|(482,378)|
+1,40,20,36,1,0,0,0,0,64,0,-1--1--1,,1|(406,531)|
+12,41,0,1301,10,150,150,3,44,0,0,2,0,0,0
+Greenfly,Graph
+12,42,0,1302,327,150,150,3,44,0,0,2,0,0,0
+European Ladybug,Graph
+10,43,Asian Ladybug,871,123,40,20,3,3,0,0,0,0,0,0
+12,44,48,648,127,10,8,0,3,0,0,-1,0,0,0
+1,45,47,43,4,0,0,22,0,0,0,-1--1--1,,1|(785,128)|
+1,46,47,44,100,0,0,22,0,0,0,-1--1--1,,1|(692,128)|
+11,47,48,733,128,6,8,34,3,0,0,1,0,0,0
+10,48,Population growth asian Ladybug,733,182,36,46,40,131,0,0,-1,0,0,0
+10,49,Growth by consuming Greenflys asi,734,2,77,22,8,131,0,0,0,0,0,0
+1,50,49,47,1,0,0,0,0,64,0,-1--1--1,,1|(654,66)|
+12,51,48,1097,123,10,8,0,3,0,0,-1,0,0,0
+1,52,54,51,4,0,0,22,0,0,0,-1--1--1,,1|(1043,128)|
+1,53,54,43,100,0,0,22,0,0,0,-1--1--1,,1|(949,128)|
+11,54,48,993,128,6,8,34,3,0,0,1,0,0,0
+10,55,Population decrease asian Ladybug,993,192,43,56,40,131,0,0,-1,0,0,0
+10,56,Energy consumption asian Ladybug,1043,7,66,26,8,131,0,0,0,0,0,0
+1,57,56,54,1,0,0,0,0,64,0,-1--1--1,,1|(921,69)|
+1,58,43,54,1,0,0,0,0,64,0,-1--1--1,,1|(894,203)|
+10,59,Meet asi,543,208,34,19,8,131,0,0,0,0,0,0
+1,60,43,59,1,0,0,0,0,64,0,-1--1--1,,1|(781,220)|
+1,61,1,59,1,0,0,0,0,64,0,-1--1--1,,1|(329,180)|
+1,62,59,15,1,0,0,0,0,64,0,-1--1--1,,1|(553,29)|
+1,63,59,47,1,0,0,0,0,64,0,-1--1--1,,1|(706,177)|
+12,64,0,1302,327,150,150,3,44,0,0,2,0,0,0
+European Ladybug,Graph
+12,65,0,1304,633,150,150,3,44,0,0,2,0,0,0
+Asian Ladybug,Graph
+///---\\\
+:L<%^E!@
+1:asd.vdf
+1:C:\Users\Anonymouse\Desktop\WS18\mpg-envinsys-plygrnd\mpg-envinfosys-teams-2018-envimaster_rs_18\umsys_exchange\asd.vdf
+9:asd
+23:0
+15:0,0,0,1,0,0
+19:75,0
+27:0,
+34:0,
+4:Time
+5:Population growth Greenfly
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+42:1
+24:0
+25:300
+26:300
