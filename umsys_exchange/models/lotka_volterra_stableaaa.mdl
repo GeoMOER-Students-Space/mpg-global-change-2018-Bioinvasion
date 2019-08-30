@@ -1,0 +1,278 @@
+{UTF-8}
+Asian Ladybug= INTEG (
+	Asian Ladybug increase rate-Asian Ladybug decrease rate,
+		Relative initial asian Ladybugs*Reference predators asian Ladybug)
+	~	pred
+	~		|
+
+Asian Ladybug decrease rate=
+	Asian Ladybug*Asian Ladybug fractional decrease rate gamma
+	~	pred/time
+	~		|
+
+Asian Ladybug fractional decrease rate gamma=
+	0.1
+	~	fraction/time
+	~		|
+
+Asian Ladybug fractional growth rate=
+	Reference asian Ladybug growth rate*(Greenfly/Reference Greenfly)
+	~	fraction/time
+	~		|
+
+Asian Ladybug increase rate=
+	Asian Ladybug*Asian Ladybug fractional growth rate
+	~	pred/time
+	~		|
+
+European Ladybug= INTEG (
+	European Ladybug increase rate-European Ladybug decrease rate,
+		Relative initial European Ladybugs*Reference predators european Ladybug)
+	~	pred
+	~		|
+
+European Ladybug decrease rate=
+	European Ladybug*European Ladybug fractional decrease rate gamma
+	~	pred/time
+	~		|
+
+European Ladybug fractional decrease rate gamma=
+	0.1
+	~	fraction/time
+	~		|
+
+European Ladybug fractional growth rate=
+	Reference european Ladybug growth rate*(Greenfly/Reference Greenfly)
+	~	fraction/time
+	~		|
+
+European Ladybug increase rate=
+	European Ladybug*European Ladybug fractional growth rate
+	~	pred/time
+	~		|
+
+Fractional predation rate asian Ladybug=
+	Reference predation rate asian Ladybug*(Asian Ladybug/Reference predators asian Ladybug\
+		)
+	~	fraction/time
+	~		|
+
+Fractional predation rate european Ladbug=
+	Rreference predation rate european Ladybug*(European Ladybug/Reference predators european Ladybug\
+		)
+	~	fraction/time
+	~		|
+
+Greenfly= INTEG (
+	Greenfly increase rate-Greenfly decrease rate,
+		Relative initial Greenflys*Reference Greenfly)
+	~	prey
+	~		|
+
+Greenfly decrease rate=
+	(Greenfly*Fractional predation rate european Ladbug)+(Greenfly*Fractional predation rate asian Ladybug\
+		)
+	~	prey/time
+	~		|
+
+Greenfly fractional growth rate alpha=
+	0.3
+	~	fraction/time
+	~		|
+
+Greenfly increase rate=
+	Greenfly fractional growth rate alpha*Greenfly
+	~	prey/time
+	~		|
+
+Reference asian Ladybug growth rate=
+	0.201
+	~	fraction/time
+	~		|
+
+Reference european Ladybug growth rate=
+	0.2
+	~	fraction/time
+	~		|
+
+Reference Greenfly=
+	100
+	~	prey
+	~		|
+
+Reference predation rate asian Ladybug=
+	0.1
+	~	fraction/time
+	~		|
+
+Reference predators asian Ladybug=
+	10
+	~	pred
+	~		|
+
+Reference predators european Ladybug=
+	10
+	~	pred
+	~		|
+
+Relative initial asian Ladybugs=
+	1
+	~	Dmnl
+	~		|
+
+Relative initial European Ladybugs=
+	10
+	~	Dmnl
+	~		|
+
+Relative initial Greenflys=
+	1
+	~	Dmnl
+	~		|
+
+Rreference predation rate european Ladybug=
+	0.1
+	~	fraction/time
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 365
+	~	Day
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Day
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Day [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Day [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,60,0
+10,1,Greenfly,1054,719,40,20,3,3,0,0,0,0,0,0
+12,2,48,752,712,10,8,0,3,0,0,-1,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(954,712)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(822,712)|
+11,5,48,888,712,6,8,34,3,0,0,1,0,0,0
+10,6,Greenfly increase rate,888,764,37,44,40,131,0,0,-1,0,0,0
+12,7,48,1372,714,10,8,0,3,0,0,-1,0,0,0
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(1298,714)|
+1,9,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(1158,714)|
+11,10,48,1228,714,6,8,34,3,0,0,1,0,0,0
+10,11,Greenfly decrease rate,1228,762,33,40,40,131,0,0,-1,0,0,0
+10,12,Greenfly fractional growth rate alpha,822,887,58,19,8,3,0,0,0,0,0,0
+10,13,Relative initial Greenflys,1299,882,44,19,8,3,0,0,0,0,0,0
+10,14,Reference Greenfly,717,612,38,25,8,131,0,0,0,0,0,0
+10,15,European Ladybug,433,140,40,20,3,3,0,0,0,0,0,0
+10,16,Asian Ladybug,1562,137,40,20,3,3,0,0,0,0,0,0
+12,17,48,208,133,10,8,0,3,0,0,-1,0,0,0
+1,18,20,15,4,0,0,22,0,0,0,-1--1--1,,1|(352,133)|
+1,19,20,17,100,0,0,22,0,0,0,-1--1--1,,1|(258,133)|
+11,20,48,305,133,6,8,34,3,0,0,1,0,0,0
+10,21,European Ladybug increase rate,305,188,34,47,40,131,0,0,-1,0,0,0
+12,22,48,671,134,10,8,0,3,0,0,-1,0,0,0
+1,23,25,22,4,0,0,22,0,0,0,-1--1--1,,1|(617,134)|
+1,24,25,15,100,0,0,22,0,0,0,-1--1--1,,1|(517,134)|
+11,25,48,568,134,6,8,34,3,0,0,1,0,0,0
+10,26,European Ladybug decrease rate,568,196,42,54,40,131,0,0,-1,0,0,0
+12,27,48,1293,137,10,8,0,3,0,0,-1,0,0,0
+1,28,30,16,4,0,0,22,0,0,0,-1--1--1,,1|(1470,137)|
+1,29,30,27,100,0,0,22,0,0,0,-1--1--1,,1|(1354,137)|
+11,30,48,1412,137,6,8,34,3,0,0,1,0,0,0
+10,31,Asian Ladybug increase rate,1412,197,38,52,40,131,0,0,-1,0,0,0
+12,32,48,1874,137,10,8,0,3,0,0,-1,0,0,0
+1,33,35,32,4,0,0,22,0,0,0,-1--1--1,,1|(1801,137)|
+1,34,35,16,100,0,0,22,0,0,0,-1--1--1,,1|(1664,137)|
+11,35,48,1733,137,6,8,34,3,0,0,1,0,0,0
+10,36,Asian Ladybug decrease rate,1733,194,40,49,40,131,0,0,-1,0,0,0
+10,37,Reference european Ladybug growth rate,167,302,75,33,8,131,0,0,0,0,0,0
+10,38,Relative initial European Ladybugs,443,352,65,31,8,131,0,0,0,0,0,0
+10,39,European Ladybug fractional decrease rate gamma,831,189,102,23,8,131,0,0,0,0,0,0
+10,40,Reference asian Ladybug growth rate,1194,282,76,24,8,131,0,0,0,0,0,0
+10,41,Relative initial asian Ladybugs,1587,366,60,23,8,131,0,0,0,0,0,0
+10,42,Asian Ladybug fractional decrease rate gamma,2031,170,95,30,8,131,0,0,0,0,0,0
+10,45,European Ladybug fractional growth rate,344,488,68,19,8,3,0,0,0,0,0,0
+10,46,Fractional predation rate european Ladbug,647,412,70,19,8,3,0,0,0,0,0,0
+10,47,Reference predators european Ladybug,843,354,65,19,8,3,0,0,0,0,0,0
+10,48,Rreference predation rate european Ladybug,851,456,74,19,8,3,0,0,0,0,0,0
+10,50,Asian Ladybug fractional growth rate,1472,477,68,19,8,3,0,0,0,0,0,0
+10,51,Fractional predation rate asian Ladybug,1746,417,64,19,8,3,0,0,0,0,0,0
+10,52,Reference predators asian Ladybug,1924,354,65,19,8,3,0,0,0,0,0,0
+10,53,Reference predation rate asian Ladybug,1928,470,65,19,8,3,0,0,0,0,0,0
+1,55,15,25,1,0,0,0,0,64,0,-1--1--1,,1|(510,60)|
+1,56,16,35,1,0,0,0,0,64,0,-1--1--1,,1|(1668,60)|
+1,57,15,20,1,0,0,0,0,64,0,-1--1--1,,1|(383,196)|
+1,58,16,30,1,0,0,0,0,64,0,-1--1--1,,1|(1475,191)|
+1,59,45,20,1,0,0,0,0,64,0,-1--1--1,,1|(348,307)|
+1,60,50,30,1,0,0,0,0,64,0,-1--1--1,,1|(1413,304)|
+1,61,37,45,1,0,0,0,0,64,0,-1--1--1,,1|(242,374)|
+1,62,40,50,1,0,0,0,0,64,0,-1--1--1,,1|(1342,357)|
+1,66,14,45,0,0,0,0,0,64,0,-1--1--1,,1|(546,555)|
+1,68,14,50,1,0,0,0,0,64,0,-1--1--1,,1|(1110,576)|
+1,69,1,45,1,0,0,0,0,64,0,-1--1--1,,1|(707,560)|
+1,70,1,50,1,0,0,0,0,64,0,-1--1--1,,1|(1531,763)|
+1,71,1,10,1,0,0,0,0,64,0,-1--1--1,,1|(1159,624)|
+1,72,1,5,1,0,0,0,0,64,0,-1--1--1,,1|(957,809)|
+1,73,12,5,1,0,0,0,0,64,0,-1--1--1,,1|(815,794)|
+1,74,39,25,1,0,0,0,0,64,0,-1--1--1,,1|(702,132)|
+1,75,42,35,1,0,0,0,0,64,0,-1--1--1,,1|(1859,184)|
+1,78,52,51,1,0,0,0,0,64,0,-1--1--1,,1|(1811,345)|
+1,79,53,51,1,0,0,0,0,64,0,-1--1--1,,1|(1808,484)|
+1,82,47,46,1,0,0,0,0,64,0,-1--1--1,,1|(718,336)|
+1,83,48,46,1,0,0,0,0,64,0,-1--1--1,,1|(740,462)|
+1,84,15,46,1,0,0,0,0,64,0,-1--1--1,,1|(553,272)|
+1,85,16,51,1,0,0,0,0,64,0,-1--1--1,,1|(1721,356)|
+1,86,51,10,1,0,0,0,0,64,0,-1--1--1,,1|(1422,574)|
+1,87,46,10,1,0,0,0,0,64,0,-1--1--1,,1|(944,629)|
+1,88,47,15,1,0,0,0,0,64,1,-1--1--1,,1|(536,355)|
+1,89,52,16,1,0,0,0,0,64,1,-1--1--1,,1|(1658,310)|
+1,90,38,15,1,0,0,0,0,64,1,-1--1--1,,1|(419,250)|
+1,91,41,16,1,0,0,0,0,64,1,-1--1--1,,1|(1555,260)|
+1,92,13,1,1,0,0,0,0,64,1,-1--1--1,,1|(1148,821)|
+1,93,14,1,1,0,0,0,0,64,1,-1--1--1,,1|(812,688)|
+12,94,2623760,196,762,150,150,3,44,0,0,2,0,0,0
+Asian Ladybug,Graph
+12,95,2754872,509,763,150,150,3,44,0,0,2,0,0,0
+European Ladybug,Graph
+12,96,8062758,1734,742,150,150,3,44,0,0,2,0,0,0
+Greenfly,Graph
+///---\\\
+:L<%^E!@
+1:asd.vdf
+1:C:\Users\Anonymouse\Desktop\WS18\mpg-envinsys-plygrnd\mpg-envinfosys-teams-2018-envimaster_rs_18\umsys_exchange\asd.vdf
+9:asd
+23:0
+15:0,0,0,1,0,0
+19:60,0
+27:0,
+34:0,
+4:Time
+5:European Ladybug
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:4
+41:0
+42:1
+24:0
+25:365
+26:365

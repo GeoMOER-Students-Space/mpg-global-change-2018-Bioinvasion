@@ -1,0 +1,219 @@
+{UTF-8}
+Asian Ladybug birth fraction=
+	0.0101
+	~	
+	~		|
+
+Asian Ladybug births=
+	(Asian Ladybug birth fraction*Greenfly Population)*Asian Ladybug Population
+	~	
+	~		|
+
+Asian Ladybug death proportionality constant=
+	1.05
+	~	
+	~		|
+
+Asian Ladybug deaths=
+	Asian Ladybug death proportionality constant*Asian Ladybug Population
+	~	
+	~		|
+
+Asian Ladybug Population= INTEG (
+	Asian Ladybug births-Asian Ladybug deaths,
+		15)
+	~	pred
+	~		|
+
+Greenfly deaths=
+	(Greenfly death proportionality constant*European Ladybug Population)*Greenfly Population\
+		 +(Greenfly death proportionality constant*Asian Ladybug Population)*Greenfly Population
+	~	
+	~		|
+
+European Ladybug births=
+	(European Ladybug birth fraction*Greenfly Population)*European Ladybug Population
+	~	
+	~		|
+
+European Ladybug birth fraction=
+	0.01
+	~	 [0,0.05,0.001]
+	~		|
+
+European Ladybug death proportionality constant=
+	1.05
+	~	 [0,2,0.05]
+	~		|
+
+European Ladybug deaths=
+	European Ladybug death proportionality constant*European Ladybug Population
+	~	
+	~		|
+
+European Ladybug Population= INTEG (
+	European Ladybug births-European Ladybug deaths,
+		15)
+	~	pred
+	~		|
+
+Greenfly birth fraction=
+	2
+	~	 [0,5,0.1]
+	~		|
+
+Greenfly births=
+	Greenfly birth fraction*Greenfly Population
+	~	
+	~		|
+
+Greenfly death proportionality constant=
+	0.02
+	~	 [0,0.05,0.001]
+	~		|
+
+Greenfly Population= INTEG (
+	Greenfly births-Greenfly deaths,
+		100)
+	~	prey
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 1000
+	~	seasons
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	seasons
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	seasons [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 0.5
+	~	seasons [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+10,1,Greenfly Population,515,316,53,27,3,3,0,0,0,0,0,0
+10,2,European Ladybug Population,512,533,53,27,3,3,0,0,0,0,0,0
+12,3,48,112,314,10,8,0,3,0,0,-1,0,0,0
+1,4,6,1,4,0,0,22,0,0,0,-1--1--1,,1|(381,316)|
+1,5,6,3,100,0,0,22,0,0,0,-1--1--1,,1|(203,316)|
+11,6,48,293,316,8,11,34,3,0,0,1,0,0,0
+10,7,Greenfly births,293,342,45,15,40,3,0,0,-1,0,0,0
+12,8,48,860,318,10,8,0,3,0,0,-1,0,0,0
+1,9,11,8,4,0,0,22,0,0,0,-1--1--1,,1|(782,318)|
+1,10,11,1,100,0,0,22,0,0,0,-1--1--1,,1|(633,318)|
+11,11,48,707,318,8,11,34,3,0,0,1,0,0,0
+10,12,Greenfly deaths,707,343,49,15,40,3,0,0,-1,0,0,0
+12,13,48,121,532,10,8,0,3,0,0,-1,0,0,0
+1,14,16,2,4,0,0,22,0,0,0,-1--1--1,,1|(381,532)|
+1,15,16,13,100,0,0,22,0,0,0,-1--1--1,,1|(209,532)|
+11,16,48,296,532,8,11,34,3,0,0,1,0,0,0
+10,17,European Ladybug births,296,557,63,15,40,3,0,0,-1,0,0,0
+12,18,48,857,532,10,8,0,3,0,0,-1,0,0,0
+1,19,21,18,4,0,0,22,0,0,0,-1--1--1,,1|(779,532)|
+1,20,21,2,100,0,0,22,0,0,0,-1--1--1,,1|(630,532)|
+11,21,48,704,532,8,11,34,3,0,0,1,0,0,0
+10,22,European Ladybug deaths,704,557,67,15,40,3,0,0,-1,0,0,0
+10,23,Greenfly birth fraction,188,424,75,15,8,3,0,0,0,0,0,0
+10,24,European Ladybug birth fraction,171,653,88,27,8,3,0,0,0,0,0,0
+10,25,Greenfly death proportionality constant,820,418,100,25,8,3,0,0,0,0,0,0
+10,26,European Ladybug death proportionality constant,820,651,101,37,8,3,0,0,0,0,0,0
+1,27,23,7,0,0,0,0,0,64,0,-1--1--1,,1|(234,387)|
+1,28,1,7,1,0,0,0,0,64,0,-1--1--1,,1|(404,352)|
+1,29,1,12,1,0,0,0,0,64,0,-1--1--1,,1|(600,363)|
+1,30,25,12,0,0,0,0,0,64,0,-1--1--1,,1|(761,379)|
+1,31,2,12,1,0,0,0,0,64,0,-1--1--1,,1|(665,476)|
+1,32,26,22,0,0,0,0,0,64,0,-1--1--1,,1|(753,597)|
+1,33,2,22,1,0,0,0,0,64,0,-1--1--1,,1|(593,593)|
+1,34,2,17,1,0,0,0,0,64,0,-1--1--1,,1|(420,592)|
+1,35,24,17,0,0,0,0,0,64,0,-1--1--1,,1|(235,603)|
+12,36,0,521,70,122,15,8,132,0,42,-1,0,0,0,0-0-0,0-0-0,Arial|16||0-0-128
+Predator-Prey Simulation
+1,37,1,16,1,0,0,0,0,64,0,-1--1--1,,1|(344,464)|
+10,38,Asian Ladybug Population,510,148,40,20,3,3,0,0,0,0,0,0
+12,39,48,108,144,10,8,0,3,0,0,-1,0,0,0
+1,40,42,38,4,0,0,22,0,0,0,-1--1--1,,1|(385,144)|
+1,41,42,39,100,0,0,22,0,0,0,-1--1--1,,1|(203,144)|
+11,42,0,294,144,6,8,34,3,0,0,1,0,0,0
+10,43,Asian Ladybug births,294,171,48,19,40,3,0,0,-1,0,0,0
+12,44,48,862,144,10,8,0,3,0,0,-1,0,0,0
+1,45,47,44,4,0,0,22,0,0,0,-1--1--1,,1|(779,144)|
+1,46,47,38,100,0,0,22,0,0,0,-1--1--1,,1|(622,144)|
+11,47,0,701,144,6,8,34,3,0,0,1,0,0,0
+10,48,Asian Ladybug deaths,701,171,48,19,40,3,0,0,-1,0,0,0
+10,49,Asian Ladybug death proportionality constant,823,220,75,19,8,3,0,0,0,0,0,0
+10,50,Asian Ladybug birth fraction,120,225,48,19,8,3,0,0,0,0,0,0
+1,51,50,42,0,0,0,0,0,64,0,-1--1--1,,1|(217,178)|
+1,52,49,47,0,0,0,0,0,64,0,-1--1--1,,1|(755,177)|
+1,53,38,47,1,0,0,0,0,64,0,-1--1--1,,1|(632,219)|
+1,54,38,42,1,0,0,0,0,64,0,-1--1--1,,1|(386,219)|
+1,55,1,42,1,0,0,0,0,64,0,-1--1--1,,1|(325,217)|
+1,56,38,11,1,0,0,0,0,64,0,-1--1--1,,1|(679,235)|
+12,57,0,796,839,150,150,3,44,0,0,2,0,0,0
+Asian Ladybug Population,Graph
+12,58,0,479,838,150,150,3,44,0,0,2,0,0,0
+European Ladybug Population,Graph
+12,59,0,170,837,150,150,3,44,0,0,2,0,0,0
+Greenfly Population,Graph
+///---\\\
+:GRAPH Population
+:TITLE Population
+:X-AXIS Time
+:SCALE
+:VAR Predator Population
+:Y-MIN 0
+:Y-MAX 650
+:LINE-WIDTH 2
+:VAR Prey Population
+:Y-MIN 0
+:Y-MAX 650
+:LINE-WIDTH 2
+
+:GRAPH Phases
+:TITLE Phases
+:X-AXIS Prey Population
+:X-MIN 0
+:X-MAX 650
+:SCALE
+:VAR Predator Population
+:Y-MIN 0
+:Y-MAX 450
+:LINE-WIDTH 2
+:L<%^E!@
+1:C:\Users\Anonymouse\Downloads\Current.vdf
+9:Current
+23:0
+15:0,0,0,1,0,0
+19:100,0
+27:2,
+34:0,
+4:Time
+5:Asian Ladybug birth fraction
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+42:0
+24:0
+25:1000
+26:1000
