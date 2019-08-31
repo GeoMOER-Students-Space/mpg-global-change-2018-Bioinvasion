@@ -1,0 +1,359 @@
+{UTF-8}
+Asi ladybug birth rate =
+	Asi ladybug food conversion efficiency*Asi ladybug search efficiency*Greenflies*Asian ladybug
+	~	pred/Month
+	~		|
+
+Asi ladybug death rate =
+	MIN(Fractional asi ladybug death rate*Asian ladybug,Max asi ladybug death rate)
+	~	pred/Month
+	~		|
+
+Asi ladybug food conversion efficiency=
+	0.101
+	~	pred/prey
+	~		|
+
+Asi ladybug search efficiency=
+	0.02
+	~	1/pred/Month
+	~		|
+
+Asian ladybug= INTEG (
+	Asi ladybug birth rate-Asi ladybug death rate,
+		1)
+	~	pred
+	~		|
+
+Eur ladybug birth rate=
+	Eur ladybug food conversion efficiency*Eur ladybug search efficiency*Greenflies*European ladybug
+	~	pred/Month
+	~		|
+
+Eur ladybug death rate=
+	MIN(Fractional eur ladybug death rate*European ladybug,Max eur ladybug death rate)
+	~	pred/Month
+	~		|
+
+Eur ladybug food conversion efficiency=
+	0.1
+	~	pred/prey
+	~		|
+
+Eur ladybug search efficiency=
+	0.02
+	~	1/pred/Month
+	~		|
+
+European ladybug= INTEG (
+	Eur ladybug birth rate-Eur ladybug death rate,
+		10)
+	~	pred
+	~		|
+
+External seed dispersion rate=
+	1000
+	~	veg/Month
+	~		|
+
+Fractional asi ladybug death rate=
+	0.1
+	~	1/Month
+	~		|
+
+Fractional eur ladybug death rate=
+	0.1
+	~	1/Month
+	~		|
+
+Fractional vegetation regeneration rate=
+	0.25
+	~	1/Month
+	~		|
+
+Greenflies= INTEG (
+	Greenfly birth rate-Greenfly death rate,
+		10)
+	~	prey
+	~		|
+
+Greenfly birth rate=
+	Greenfly food conversion efficiency*Greenfly search efficiency*Vegetation*Greenflies
+	~	prey/Month
+	~		|
+
+Greenfly death rate=
+	MIN(Eur ladybug search efficiency*European ladybug*Greenflies,Max greenfly death rate\
+		)
+	+ MIN(Asi ladybug search efficiency*Asian ladybug*Greenflies,Max greenfly death rate\
+		)
+	~	prey/Month
+	~		|
+
+Greenfly food conversion efficiency=
+	0.001
+	~	prey/veg
+	~		|
+
+Greenfly search efficiency=
+	0.1
+	~	1/prey/Month
+	~		|
+
+Max asi ladybug death rate=
+	IF THEN ELSE(Asian ladybug>=Min asi ladybug population,(Asian ladybug-Min asi ladybug population\
+		)/Min asi ladybug death time,0)
+	~	pred/Month
+	~		|
+
+Max eur ladybug death rate=
+	IF THEN ELSE(European ladybug>=Min eur ladybug population,(European ladybug-Min eur ladybug population\
+		)/Min eur ladybug death time,0)
+	~	pred/Month
+	~		|
+
+Max greenfly death rate=
+	IF THEN ELSE(Greenflies>=Min greenfly population,(Greenflies-Min greenfly population\
+		)/Min Greenfly death time,0)
+	~	prey/Month
+	~		|
+
+Max vegetation death rate=
+	IF THEN ELSE(Vegetation>=Min vegetation population,(Vegetation-Min vegetation population\
+		)/Min vegetation death time,0)
+	~	veg/Month
+	~		|
+
+Min asi ladybug death time=
+	1
+	~	Month
+	~		|
+
+Min asi ladybug population=
+	0
+	~	pred
+	~		|
+
+Min eur ladybug death time=
+	1
+	~	Month
+	~		|
+
+Min eur ladybug population=
+	0
+	~	pred
+	~		|
+
+Min Greenfly death time=
+	1
+	~	Month
+	~		|
+
+Min greenfly population=
+	2
+	~	prey
+	~		|
+
+Min vegetation death time=
+	1
+	~	Month
+	~		|
+
+Min vegetation population=
+	2
+	~	veg
+	~		|
+
+Seed survival probability=
+	0.5
+	~	Dmnl
+	~		|
+
+Vegetation= INTEG (
+	+Vegetation regeneration rate-Vegetation death rate,
+		1000)
+	~	veg
+	~		|
+
+Vegetation death rate=
+	MIN(Greenfly search efficiency*Greenflies*Vegetation,Max vegetation death rate)
+	~	veg/Month
+	~		|
+
+Vegetation regeneration rate=
+	Fractional vegetation regeneration rate*Vegetation+External seed dispersion rate*Seed survival probability
+	~	veg/Month
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 1000
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,50,0
+10,1,Vegetation,1492,26,40,20,3,3,0,0,0,0,0,0
+12,2,48,1277,24,10,8,0,3,0,0,-1,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(1413,24)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(1325,24)|
+11,5,48,1369,24,6,8,34,3,0,0,1,0,0,0
+10,6,Vegetation regeneration rate,1369,51,54,19,40,3,0,0,-1,0,0,0
+12,7,48,1720,24,10,8,0,3,0,0,-1,0,0,0
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(1668,24)|
+1,9,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(1573,24)|
+11,10,48,1621,24,6,8,34,3,0,0,1,0,0,0
+10,11,Vegetation death rate,1621,51,54,19,40,3,0,0,-1,0,0,0
+10,12,Max vegetation death rate,1724,-96,49,19,8,3,0,0,0,0,0,0
+10,13,Min vegetation death time,1820,-190,47,19,8,3,0,0,0,0,0,0
+10,14,Min vegetation population,1516,-193,47,19,8,3,0,0,0,0,0,0
+10,15,Seed survival probability,1263,-123,43,19,8,3,0,0,0,0,0,0
+10,16,External seed dispersion rate,1070,-50,47,19,8,3,0,0,0,0,0,0
+10,17,Fractional vegetation regeneration rate,1099,138,66,19,8,3,0,0,0,0,0,0
+10,18,Greenfly search efficiency,1493,139,38,19,8,3,0,0,0,0,0,0
+1,19,15,5,1,0,0,0,0,64,0,-1--1--1,,1|(1329,-54)|
+1,20,16,5,1,0,0,0,0,64,0,-1--1--1,,1|(1242,-21)|
+1,21,17,5,1,0,0,0,0,64,0,-1--1--1,,1|(1241,58)|
+1,22,1,5,1,0,0,0,0,64,0,-1--1--1,,1|(1419,-3)|
+1,23,1,12,1,0,0,0,0,64,0,-1--1--1,,1|(1592,-48)|
+1,24,1,10,1,0,0,0,0,64,0,-1--1--1,,1|(1599,-11)|
+1,25,14,12,1,0,0,0,0,64,0,-1--1--1,,1|(1604,-134)|
+1,26,13,12,1,0,0,0,0,64,0,-1--1--1,,1|(1761,-154)|
+10,27,Greenflies,1492,422,40,20,3,3,0,0,0,0,0,0
+12,28,48,1274,423,10,8,0,3,0,0,-1,0,0,0
+1,29,31,27,4,0,0,22,0,0,0,-1--1--1,,1|(1414,423)|
+1,30,31,28,100,0,0,22,0,0,0,-1--1--1,,1|(1324,423)|
+11,31,48,1371,423,6,8,34,3,0,0,1,0,0,0
+10,32,Greenfly birth rate,1371,442,57,11,40,3,0,0,-1,0,0,0
+12,33,48,1721,426,10,8,0,3,0,0,-1,0,0,0
+1,34,36,33,4,0,0,22,0,0,0,-1--1--1,,1|(1670,426)|
+1,35,36,27,100,0,0,22,0,0,0,-1--1--1,,1|(1575,426)|
+11,36,48,1624,426,6,8,34,3,0,0,1,0,0,0
+10,37,Greenfly death rate,1624,445,60,11,40,3,0,0,-1,0,0,0
+10,38,Max greenfly death rate,1722,326,42,19,8,3,0,0,0,0,0,0
+10,39,Min Greenfly death time,1801,231,42,19,8,3,0,0,0,0,0,0
+10,40,Min greenfly population,1630,236,40,19,8,3,0,0,0,0,0,0
+10,41,Greenfly food conversion efficiency,1103,421,66,19,8,3,0,0,0,0,0,0
+1,42,40,38,1,0,0,0,0,64,0,-1--1--1,,1|(1677,269)|
+1,43,39,38,1,0,0,0,0,64,0,-1--1--1,,1|(1750,267)|
+1,44,38,36,1,0,0,0,0,64,0,-1--1--1,,1|(1656,370)|
+1,45,27,36,1,0,0,0,0,64,0,-1--1--1,,1|(1592,402)|
+1,46,27,38,1,0,0,0,0,64,0,-1--1--1,,1|(1585,343)|
+1,47,27,10,1,0,0,0,0,64,0,-1--1--1,,1|(1534,220)|
+1,48,18,10,1,0,0,0,0,64,0,-1--1--1,,1|(1546,67)|
+1,49,18,31,1,0,0,0,0,64,0,-1--1--1,,1|(1444,281)|
+1,50,1,31,1,0,0,0,0,64,0,-1--1--1,,1|(1391,222)|
+1,51,27,31,1,0,0,0,0,64,0,-1--1--1,,1|(1419,401)|
+10,52,European ladybug,852,813,40,20,3,3,0,0,0,0,0,0
+1,53,41,31,1,0,0,0,0,64,0,-1--1--1,,1|(1310,393)|
+12,54,48,601,809,10,8,0,3,0,0,-1,0,0,0
+1,55,57,52,4,0,0,22,0,0,0,-1--1--1,,1|(764,809)|
+1,56,57,54,100,0,0,22,0,0,0,-1--1--1,,1|(658,809)|
+11,57,48,711,809,6,8,34,3,0,0,1,0,0,0
+10,58,Eur ladybug birth rate,711,836,55,19,40,3,0,0,-1,0,0,0
+12,59,48,1072,810,10,8,0,3,0,0,-1,0,0,0
+1,60,62,59,4,0,0,22,0,0,0,-1--1--1,,1|(1022,810)|
+1,61,62,52,100,0,0,22,0,0,0,-1--1--1,,1|(931,810)|
+11,62,48,977,810,6,8,34,3,0,0,1,0,0,0
+10,63,Eur ladybug death rate,977,837,39,19,40,3,0,0,-1,0,0,0
+10,64,Max eur ladybug death rate,1051,694,54,19,8,3,0,0,0,0,0,0
+10,65,Min eur ladybug death time,1146,611,52,19,8,3,0,0,0,0,0,0
+10,66,Min eur ladybug population,942,600,52,19,8,3,0,0,0,0,0,0
+10,67,Eur ladybug food conversion efficiency,684,949,66,19,8,3,0,0,0,0,0,0
+10,68,Fractional eur ladybug death rate,965,921,59,19,8,3,0,0,0,0,0,0
+1,69,65,64,1,0,0,0,0,64,0,-1--1--1,,1|(1079,634)|
+1,70,66,64,1,0,0,0,0,64,0,-1--1--1,,1|(1004,631)|
+1,71,64,62,1,0,0,0,0,64,0,-1--1--1,,1|(1022,755)|
+1,72,68,62,1,0,0,0,0,64,0,-1--1--1,,1|(950,862)|
+1,73,67,57,1,0,0,0,0,64,0,-1--1--1,,1|(720,873)|
+1,74,52,62,1,0,0,0,0,64,0,-1--1--1,,1|(942,791)|
+1,75,52,64,1,0,0,0,0,64,0,-1--1--1,,1|(942,735)|
+1,76,52,36,1,0,0,0,0,64,0,-1--1--1,,1|(1414,587)|
+10,77,Eur ladybug search efficiency,1251,534,61,19,8,3,0,0,0,0,0,0
+1,78,77,36,1,0,0,0,0,64,0,-1--1--1,,1|(1514,492)|
+1,79,77,57,1,0,0,0,0,64,0,-1--1--1,,1|(865,570)|
+1,80,27,57,1,0,0,0,0,64,0,-1--1--1,,1|(793,543)|
+1,81,52,57,1,0,0,0,0,64,0,-1--1--1,,1|(774,780)|
+1,82,12,10,1,0,0,0,0,64,0,-1--1--1,,1|(1652,-46)|
+10,83,Asian ladybug,1913,784,40,20,3,3,0,0,0,0,0,0
+12,84,48,1662,780,10,8,0,3,0,0,-1,0,0,0
+1,85,87,83,4,0,0,22,0,0,0,-1--1--1,,1|(1825,780)|
+1,86,87,84,100,0,0,22,0,0,0,-1--1--1,,1|(1719,780)|
+11,87,48,1772,780,6,8,34,3,0,0,1,0,0,0
+10,88,Asi ladybug birth rate,1772,807,55,19,40,3,0,0,-1,0,0,0
+12,89,48,2133,781,10,8,0,3,0,0,-1,0,0,0
+1,90,92,89,4,0,0,22,0,0,0,-1--1--1,,1|(2083,781)|
+1,91,92,83,100,0,0,22,0,0,0,-1--1--1,,1|(1992,781)|
+11,92,48,2038,781,6,8,34,3,0,0,1,0,0,0
+10,93,Asi ladybug death rate,2038,808,58,19,40,3,0,0,-1,0,0,0
+10,94,Max asi ladybug death rate,2112,665,54,19,8,3,0,0,0,0,0,0
+10,95,Min asi ladybug death time,2207,582,52,19,8,3,0,0,0,0,0,0
+10,96,Min asi ladybug population,2003,571,52,19,8,3,0,0,0,0,0,0
+10,97,Asi ladybug food conversion efficiency,1745,920,72,19,8,3,0,0,0,0,0,0
+10,98,Fractional asi ladybug death rate,2026,892,65,19,8,3,0,0,0,0,0,0
+1,99,95,94,1,0,0,0,0,64,0,-1--1--1,,1|(2140,605)|
+1,100,96,94,1,0,0,0,0,64,0,-1--1--1,,1|(2065,602)|
+1,101,94,92,1,0,0,0,0,64,0,-1--1--1,,1|(2083,726)|
+1,102,98,92,1,0,0,0,0,64,0,-1--1--1,,1|(2011,833)|
+1,103,97,87,1,0,0,0,0,64,0,-1--1--1,,1|(1781,844)|
+1,104,83,92,1,0,0,0,0,64,0,-1--1--1,,1|(2003,762)|
+1,105,83,94,1,0,0,0,0,64,0,-1--1--1,,1|(2003,706)|
+10,106,Asi ladybug search efficiency,2312,505,61,19,8,3,0,0,0,0,0,0
+1,107,106,87,1,0,0,0,0,64,0,-1--1--1,,1|(1926,541)|
+1,108,83,87,1,0,0,0,0,64,0,-1--1--1,,1|(1835,751)|
+1,109,83,36,0,0,0,0,0,64,0,-1--1--1,,1|(1766,602)|
+1,110,106,36,0,0,0,0,0,64,0,-1--1--1,,1|(1946,462)|
+1,111,27,87,0,0,0,0,0,64,0,-1--1--1,,1|(1633,602)|
+12,112,3868772,806,-86,150,150,3,44,0,0,2,0,0,0
+Asian ladybug,Graph
+12,113,7210922,809,217,150,150,3,44,0,0,2,0,0,0
+European ladybug,Graph
+12,114,5900408,2056,-81,150,150,3,44,0,0,2,0,0,0
+Greenflies,Graph
+12,115,6883424,2057,228,150,150,3,44,0,0,2,0,0,0
+Vegetation,Graph
+///---\\\
+:L<%^E!@
+1:Current.vdf
+9:Current
+23:0
+15:0,0,0,1,0,0
+19:50,0
+27:0,
+34:0,
+4:Time
+5:Vegetation
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+42:1
+24:0
+25:1000
+26:1000
